@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-Hola benvingut!
+Hola benvingut {{ $username }}!
 </body>
 </html>

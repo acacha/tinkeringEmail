@@ -11,6 +11,9 @@
 |
 */
 
+use App\Mail\WelcomeEmail;
+use App\Notifications\WelcomeNotification;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,4 +25,16 @@ Route::get('/sendemail', function () {
 //    });
     Mail::to('sergiturbadenas@gmail.com')->send(new WelcomeEmail());
     dump('Email enviat correctament!');
+});
+
+Route::get('/sendnotification', function () {
+//    $user = factory(App\User::class)->create();
+//    Auth::login($user);
+
+    Auth::loginUsingId(1);
+    $user = Auth::user();
+    $user->notify(new WelcomeNotification());
+    dump("notification send!");
+
+    //Notification::send
 });
